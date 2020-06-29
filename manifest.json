@@ -1,0 +1,36 @@
+{
+	"manifest_version": 2,
+	"name": "Enable Select",
+	"version": "1.0",
+	"author": "Sarthak Jain",
+	"description": "This plugin helps enable text selection on websites.",
+	"browser_action":{
+		"browser_style": true,
+		"default_icon": {
+			"48": "icons/EnableSelect48.png",
+			"96": "icons/EnableSelect96.png"
+		},
+		"default_title": "Enable Select",
+		"default_popup": "interface/popup.html"
+	},
+	"icons": {
+		"48": "icons/EnableSelect48.png",
+		"96": "icons/EnableSelect96.png"
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"js": ["EnableSelect.js"],
+		"run_at": "document_end"
+	}],
+	"background":{
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+	"permissions": [
+		"storage",
+		"tabs",
+		"activeTab",
+		"unlimitedStorage",
+		"background"
+	]
+}

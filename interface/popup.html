@@ -1,0 +1,32 @@
+<!DOCTYPEhtml>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Sarthak Jain">
+		<title>Enable Select</title>
+		<style>
+			body{
+				background-color: white;
+				color: black;
+				width: 290px;
+			}
+			#reload_tip{
+				display: none;
+			}
+			#controls-container{
+				display:inline;
+				line-height: 10px;
+				padding: 5px;
+				font-size: 22px;
+			}
+		</style>
+	</head>	
+	<body>
+		<div id="controls-container">
+			<input type="checkbox" id="ext_status" name="active_status">
+			<label for="active_status">Enable on this Base URL</label>			
+		</div>
+		<script src="popup.js"></script>
+	</body>
+</html>
