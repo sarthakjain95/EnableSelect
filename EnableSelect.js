@@ -1,33 +1,32 @@
 
-document.body.style.border= "4px solid red";
-const base_url= window.location.origin;
+const baseURL= window.location.origin;
 
-function enable_selection(){
+function enableSelection(){
 
-	console.log("pasting allowwd");
+	console.log("Text Selection Enabled!");
 
-	const new_val= "auto !important";
+	const newVal= "auto !important";
 
 	document.body.setAttribute("style", "-webkit-user-select:none");
 	document.body.setAttribute("style", "-moz-user-select:-moz-none");
 	document.body.setAttribute("style", "-ms-user-select:none");
 	document.body.setAttribute("style", "user-select:none");
 
-	document.body.style["user-select"]= new_val;
+	document.body.style["user-select"]= newVal;
 	document.body.setAttribute("unselectable", "off");
 
-	let all_elements= document.getElementsByTagName("*");
-	for(let i=0; i<all_elements.length; i++){
-		all_elements[i].style["cursor"]= "auto";
-		all_elements[i].style["user-select"]= new_val;
-		all_elements[i].style["-ms-user-select"]= new_val;
-		all_elements[i].style["-moz-user-select"]= new_val;
-		all_elements[i].style["-khtml-user-select"]= new_val;
-		all_elements[i].style["-webkit-user-select"]= new_val;
-		all_elements[i].setAttribute("unselectable", "off");
-		all_elements[i].setAttribute('style', "user-select:"+new_val);
-		all_elements[i].setAttribute('style', "-moz-user-select:"+new_val);
-		all_elements[i].setAttribute('style', "-webkit-user-select:"+new_val);
+	let allElements= document.getElementsByTagName("*");
+	for(let i=0; i<allElements.length; i++){
+		allElements[i].style["cursor"]= "auto";
+		allElements[i].style["user-select"]= newVal;
+		allElements[i].style["-ms-user-select"]= newVal;
+		allElements[i].style["-moz-user-select"]= newVal;
+		allElements[i].style["-khtml-user-select"]= newVal;
+		allElements[i].style["-webkit-user-select"]= newVal;
+		allElements[i].setAttribute("unselectable", "off");
+		allElements[i].setAttribute('style', "user-select:"+newVal);
+		allElements[i].setAttribute('style', "-moz-user-select:"+newVal);
+		allElements[i].setAttribute('style', "-webkit-user-select:"+newVal);
 	}
 
 	window.onmousedown= null;
@@ -66,17 +65,17 @@ function enable_selection(){
 }
 
 
-function process_local_results(res){
+function checkURL(res){
 	let urls= res["urls"];
-	if( base_url in urls ) enable_selection();
+	if( baseURL in urls ) enableSelection();
 }
 
-browser.storage.local.get("urls").then(process_local_results, console.error);
+browser.storage.local.get("urls").then(checkURL, console.error);
 
 function logStorageChange(changes, area) {
 	if(area=="local"){
 		let urls= changes["urls"]["newValue"];
-		if(base_url in urls) enable_selection();	
+		if(baseURL in urls) enableSelection();	
 	}
 }
 

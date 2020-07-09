@@ -1,9 +1,9 @@
 
 let checkbox= document.getElementById("ext_status");
-checkbox.addEventListener("change", val=>toggle_url(checkbox.checked));
+checkbox.addEventListener("change", val=>toggleURL(checkbox.checked));
 
-async function toggle_url(is_checked){
-	if(is_checked){
+async function toggleURL(isChecked){
+	if(isChecked){
 		let {urls}= await browser.storage.local.get('urls');
 		browser.tabs.query({currentWindow: true, active: true}).then(tabs=>{
 			for(let tab of tabs){
@@ -36,7 +36,6 @@ async function init(){
 			for(let tab of tabs){
 				let url= new URL(tab.url);
 				if(url.origin in urls){
-					console.log("found url!");
 					checkbox.checked= true;
 					break;
 				}
